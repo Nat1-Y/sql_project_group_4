@@ -1,7 +1,9 @@
 Employee Performance Evaluation:
+
 Evaluate the performance of sales employees by analyzing their sales activities. Calculate
 metrics such as total sales amount, number of deals closed, and average deal size for each
 employee.
+
 Write SQL queries to aggregate sales data by employee, calculating performance metrics based
 on sales transactions.
 
