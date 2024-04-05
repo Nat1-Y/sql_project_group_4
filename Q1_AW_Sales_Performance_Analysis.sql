@@ -1,9 +1,10 @@
--- Q1 Sales Performance Analysis
+ Sales Performance Analysis:
 
--- A, Generate a report showcasting the total amount for
--- each product category over the past three years.
--- include a trend analysis to identify any significant
--- changes in sales volume.
+ Generate a report showcasing the total sales amount for each product category over the past
+ three years. Include a trend analysis to identify any significant changes in sales volume.
+
+ Write SQL queries to retrieve sales data from the AdventureWorks database, grouping by
+ product category and aggregating sales amounts over time.
 
 WITH Sales AS
   (SELECT PPC.Name AS PRODUCT_CATEGORY,
