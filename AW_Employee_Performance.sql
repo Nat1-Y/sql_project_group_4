@@ -12,7 +12,7 @@ SELECT Q1.EmployeeKey,
        Q1.FULL_NAME,
        sum(Q1.SalesAmount) AS TOTAL_SALES,
 	   count(Q1.SalesOrderNumber) AS NUMBER_ORDERS,
-	   sum(Q1.SalesAmount) / count(Q1.SalesOrderNumber) AS AVERAGE_DEAL_SIZE
+	   avg(Q1.SalesAmount) AS AVERAGE_DEAL_SIZE
 FROM
   (SELECT DE.EmployeeKey,
           FirstName + '' + LastName AS FULL_NAME,
