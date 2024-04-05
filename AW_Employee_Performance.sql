@@ -1,16 +1,24 @@
+Employee Performance Evaluation:
+Evaluate the performance of sales employees by analyzing their sales activities. Calculate
+metrics such as total sales amount, number of deals closed, and average deal size for each
+employee.
+Write SQL queries to aggregate sales data by employee, calculating performance metrics based
+on sales transactions.
 
--- Q4 
 
--- Part 1
-
-SELECT 
-    CONCAT(DE.FirstName, ' ', DE.LastName) AS Employee_Name,
-    SUM(FIC.SalesAmount) AS Total_Sales_Amount,
-    COUNT(FIC.SalesAmount) AS Number_of_Deals,
-    SUM(FIC.SalesAmount) / COUNT(FIC.SalesAmount) AS Average_Deal_Size
-FROM 
-    FactInternetSales FIC
-INNER JOIN 
-    DimEmployee DE ON FIC.SalesTerritoryKey = DE.SalesTerritoryKey
-GROUP BY 
-    CONCAT(DE.FirstName, ' ', DE.LastName);
+SELECT Q1.EmployeeKey,
+       Q1.FULL_NAME,
+       sum(Q1.SalesAmount) AS TOTAL_SALES,
+	   count(Q1.SalesOrderNumber) AS NUMBER_ORDERS,
+	   sum(Q1.SalesAmount) / count(Q1.SalesOrderNumber) AS AVERAGE_DEAL_SIZE
+FROM
+  (SELECT DE.EmployeeKey,
+          FirstName + '' + LastName AS FULL_NAME,
+          SalesAmount,
+		  SalesOrderNumber
+   FROM DimEmployee DE
+   INNER JOIN FactResellerSales FRS ON DE.EmployeeKey = FRS.EmployeeKey) Q1
+GROUP BY Q1.EmployeeKey,
+         Q1.FULL_NAME
+ORDER BY
+		AVERAGE_DEAL_SIZE DESC
