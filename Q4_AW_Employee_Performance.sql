@@ -7,28 +7,6 @@ employee.
 Write SQL queries to aggregate sales data by employee, calculating performance metrics based
 on sales transactions.
 
--- Part 1
-
-SELECT Q1.EmployeeKey,
-       Q1.FULL_NAME,
-       sum(Q1.SalesAmount) AS TOTAL_SALES,
-	   count(Q1.SalesOrderNumber) AS NUMBER_ORDERS,
-	   avg(Q1.SalesAmount) AS AVERAGE_DEAL_SIZE
-FROM
-  (SELECT DE.EmployeeKey,
-          FirstName + '' + LastName AS FULL_NAME,
-          SalesAmount,
-		  SalesOrderNumber
-   FROM DimEmployee DE
-   INNER JOIN FactResellerSales FRS ON DE.EmployeeKey = FRS.EmployeeKey) Q1
-GROUP BY Q1.EmployeeKey,
-         Q1.FULL_NAME
-ORDER BY
-		AVERAGE_DEAL_SIZE DESC
-
-
-
--- Part 2
 
 SELECT	Q1.EmployeeKey,
 		Q1.Full_Name,
